@@ -1,5 +1,5 @@
 {
-  "name": "@ecommerce-monorepo/auth-service",
+  "name": "@ecommerce-monorepo/communication-service",
   "version": "0.0.1",
   "private": true,
   "nx": {
@@ -12,15 +12,15 @@
         "defaultConfiguration": "production",
         "options": {
           "platform": "node",
-          "outputPath": "auth-service/dist",
+          "outputPath": "communication-service/dist",
           "format": [
             "cjs"
           ],
           "bundle": false,
-          "main": "auth-service/src/main.ts",
-          "tsConfig": "auth-service/tsconfig.app.json",
+          "main": "communication-service/src/main.ts",
+          "tsConfig": "communication-service/tsconfig.app.json",
           "assets": [
-            "auth-service/src/assets"
+            "communication-service/src/assets"
           ],
           "esbuildOptions": {
             "sourcemap": true,
@@ -48,8 +48,8 @@
         "cache": true,
         "executor": "@nx/js:prune-lockfile",
         "outputs": [
-          "{workspaceRoot}/auth-service/dist/package.json",
-          "{workspaceRoot}/auth-service/dist/package-lock.json"
+          "{workspaceRoot}/communication-service/dist/package.json",
+          "{workspaceRoot}/communication-service/dist/package-lock.json"
         ],
         "options": {
           "buildTarget": "build"
@@ -61,7 +61,7 @@
         ],
         "cache": true,
         "outputs": [
-          "{workspaceRoot}/auth-service/dist/workspace_modules"
+          "{workspaceRoot}/communication-service/dist/workspace_modules"
         ],
         "executor": "@nx/js:copy-workspace-modules",
         "options": {
@@ -83,34 +83,27 @@
           "build"
         ],
         "options": {
-          "buildTarget": "@ecommerce-monorepo/auth-service:build",
+          "buildTarget": "@ecommerce-monorepo/communication-service:build",
           "runBuildTargetDependencies": false
         },
         "configurations": {
           "development": {
-            "buildTarget": "@ecommerce-monorepo/auth-service:build:development"
+            "buildTarget": "@ecommerce-monorepo/communication-service:build:development"
           },
           "production": {
-            "buildTarget": "@ecommerce-monorepo/auth-service:build:production"
+            "buildTarget": "@ecommerce-monorepo/communication-service:build:production"
           }
         }
       }
     }
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.5",
+    "axios": "^1.13.2",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
-    "ioredis": "^5.8.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.19.4"
+    "nodemailer": "^7.0.10"
   },
   "devDependencies": {
-    "@types/bcrypt": "^6.0.0",
-    "@types/cookie-parser": "^1.4.10",
-    "@types/cors": "^2.8.19",
-    "@types/jsonwebtoken": "^9.0.10"
+    "@types/nodemailer": "^7.0.3"
   }
 }
