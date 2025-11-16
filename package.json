@@ -2,7 +2,9 @@
   "name": "@ecommerce-monorepo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev": "nx run-many --target=serve --all --parallel"
+  },
   "private": true,
   "dependencies": {
     "@nx/next": "^22.0.3",
@@ -31,6 +33,7 @@
   },
   "workspaces": [
     "packages/*",
-    "auth-service"
+    "auth-service",
+    "communication-service"
   ]
 }
