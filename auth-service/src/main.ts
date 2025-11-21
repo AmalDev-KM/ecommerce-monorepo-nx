@@ -2,10 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { connectDB } from './database/mongodb';
-import { authRoutes } from './routes/auth.routes';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import { redis } from './database/redis';
+import { setupRoutes } from './routes';
 
 dotenv.config();
 const host = process.env.HOST ?? '0.0.0.0';
@@ -21,7 +21,7 @@ app.use(cookieParser());
 const url = process.env.MOGODB_URL || '';
 
 //routes
-app.use('/api/auth', authRoutes);
+setupRoutes(app);
 
 const serverStart = async () => {
   //establish db connection
