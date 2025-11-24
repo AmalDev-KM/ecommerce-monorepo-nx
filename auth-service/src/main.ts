@@ -26,14 +26,11 @@ setupRoutes(app);
 const serverStart = async () => {
   //establish db connection
   await connectDB(url);
-  // 🔥 Test Redis connection
+
+  // Test Redis connection
   const pong = await redis.ping();
   console.log('Redis connection:', pong === 'PONG' ? 'OK' : 'FAILED');
 
-  // root
-  app.get('/', (req, res) => {
-    res.send({ message: 'Hello API' });
-  });
 
   // health
   app.get('/api/auth/health', (req, res) => {
